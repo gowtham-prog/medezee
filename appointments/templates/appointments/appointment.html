@@ -1,0 +1,57 @@
+{% extends "appointments/layout.html"%}
+{% load static %}
+{% block body%}
+<form action="{% url 'book' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input autofocus class="form-control" type="text" name="name" placeholder="Patient name">
+        </div>
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input autofocus class="form-control" type="number" name="age" placeholder="Age">
+        </div>
+        <div class="form-group">
+             <label for="exampleFormControlSelect1">gender</label>
+             <select style ="height: 38px;" class="form-select" aria-label="Default select example" name="gender" >
+              {% for gend in gender %}
+                <option value="{{ gend.id }}">{{ gend.Gender }}</option>
+             {% endfor %}
+           </select>
+         </div>
+        <div class="form-group">
+             <label for="exampleFormControlSelect1"></label>
+             <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="hosiptal"name="hospital" >
+              {% for hosp in hospital %}
+                <option value="{{ hosp.id }}">{{ hosp.Name }}</option>
+             {% endfor %}
+           </select>
+         </div>
+         <div class="form-group">
+             <label for="exampleFormControlSelect1"></label>
+             <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="Department" name="department" >
+              {% for dept in department %}
+                <option value="{{ dept.id }}">{{ dept.Name }}</option>
+             {% endfor %}
+           </select>
+         </div>
+         <div class="form-group">
+             <label for="exampleFormControlSelect1"></label>
+             <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="doctor" name="doctor" >
+              {% for doc in doctor %}
+                <option value="{{ doc.id }}">{{ doc.Name }}</option>
+             {% endfor %}
+           </select>
+         </div>
+
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="text" name="problem" placeholder="Problem">
+        </div>
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="time" name="time" format='%H:%M' placeholder="Time">
+        </div>
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="date" name="date" placeholder="Date">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Book">
+    </form>
+
+{% endblock %}

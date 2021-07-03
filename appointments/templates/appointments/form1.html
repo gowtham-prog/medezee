@@ -1,0 +1,11 @@
+{% extends "appointments/layout.html"%}
+{% load static %}
+{% block body%}
+<form action="{% url 'ftc' %}" method="post">
+{% csrf_token %}
+ <div class="form-group" style = "margin-bottom : 5px;">
+    <input class="form-control" type="text" name="Name" placeholder="enter the name of testcenter">
+    <input class="btn btn-primary" type="submit" value="show all orders">
+</form>
+</div>
+{%endblock%}

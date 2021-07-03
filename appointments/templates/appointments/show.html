@@ -1,0 +1,43 @@
+{% extends "appointments/layout.html "%}
+
+{% block body%}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    {% if list is not None%}
+    <h2>Booked appointments</h2>
+    <ul>
+    {% for item in list %}
+    {% if item.Active%}
+    <li class="list-group-item" >Patient Name :{{ item.Name}}  Doctor: {{item.Doctor}} Time :{{item.timestamp}} Date :{{item.Date}} <a class="nav-link scrollto" href= "{% url 'cancel' item.id%}" >Cancel </a></li>
+    {%endif%}
+    {% endfor %}
+    </ul>
+    <a href="{%url 'book'%}" class="nav-link scrollto"> Book another appointment </a>
+    {%endif%}
+    
+
+    {% if list2 is not None%}
+    <h2>Booked tests</h2>
+    <ul>
+    {% for item in list2 %}
+    {% if item.Active%}
+    <li class="list-group-item" >Patient Name :{{ item.patient.Name}}  Test: {{item.Test}} Time :{{item.timestamp}} Date :{{item.Date}} <a class="nav-link scrollto" href= "{% url 'canceltest' item.id%}" >Cancel </a></li>
+    {%endif%}
+    {% endfor %}
+    </ul>
+    <a href="{%url 'test'%}" class="nav-link scrollto"> Book another Test </a>
+    {%endif%}
+
+    {% if list3 is not None%}
+    <h2>Order medicine</h2>
+    <ul>
+    {% for item in list3%}
+    {% if item.Active%}
+    <li class="list-group-item" >Patient Name :{{ item.Patient.Name}}  medicine: {{item.medicine}} Date :{{item.Date}} <a class="nav-link scrollto" href= "{% url 'cancelmed' item.id%}" >Cancel </a></li>
+    {%endif%}
+    {% endfor %}
+    </ul>
+    <a href="{%url 'med'%}" class="nav-link scrollto"> Booksome more Medicine </a>
+    {%endif%}
+{%endblock%}

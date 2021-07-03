@@ -1,0 +1,44 @@
+{% extends "appointments/layout.html"%}
+{% load static %}
+{% block body%}
+<form action="{% url 'test' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+             <label for="exampleFormControlSelect1"></label>
+             <select style ="height: 38px;" class="form-select" aria-label="Default select example"placeholder="patient"name="patient" >
+              {% for gend in patient %}
+                <option value="{{ gend.id }}">{{ gend.Name }}</option>
+             {% endfor %}
+           </select>
+         </div>
+         <div class="form-group">
+             <label for="exampleFormControlSelect1"></label>
+             <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="location"name="location" >
+              {% for hosp in location %}
+                <option value="{{ hosp.id}}">{{ hosp.Village}}</option>
+             {% endfor %}
+           </select>
+         </div>
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="text" name="test" placeholder="Test">
+        </div>
+
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <select style ="height: 38px;" class="form-select" aria-label="Default select example" name="gender" >
+                <option value="Home">Home</option>
+                <option value="test center">Test center</option>
+        </div>
+
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="text" name="Name" placeholder="Test Center">
+        </div>
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="time" name="time" format='%H:%M' placeholder="Time">
+        </div>
+        <div class="form-group" style = "margin-bottom : 5px;">
+            <input class="form-control" type="date" name="date" placeholder="Date">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Book Test">
+    </form>
+
+{% endblock %}

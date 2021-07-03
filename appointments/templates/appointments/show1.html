@@ -1,0 +1,41 @@
+{% extends "appointments/layout.html "%}
+
+{% block body%}
+{% if dept is not None%}
+<h2> Departments we have</h2>
+   <div >
+        {% for dep in dept %}
+            <li class="list-group-item"> <strong>{{ dep.id }}. {{ dep.Name }} specialists: Dr. {{dep.Doctor.Name}} ({{dep.Hospital.Name}})</strong></li>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if doc is not None%}
+<h2>our Specialist Doctors</h2>
+   <div >
+        {% for dep in doc %}
+            {%for item in dep.Department.all %}
+            <li class="list-group-item" >{{ dep.id }}.Dr. {{ dep.Name }} specialist in {{dep.Department.Name}} ({{item.Name}})</li>
+            {%endfor%}
+        {% endfor %}
+    </div>
+{% endif %}
+{% if hosp is not None%}
+<h2>Our Hospital</h2>
+   <div class="form-group">
+        {% for dep in hosp %}
+        <li class="list-group-item" >{{ dep.id }} Hospital name:{{ dep.Name }} Specilities <ul> 
+        {%for item in dep.Department.all %}
+        <li>{{item.Name}}</li>
+         {%endfor%}
+         </ul>
+        <ul>Doctors  
+        {%for item in dep.Doctor.all %}
+        <li> Dr.{{item.Name}} {{item.Department.Name}} </li>
+         {%endfor%}
+        </ul>
+        </li>
+        {% endfor %}
+        
+     </div>
+{% endif %}
+{% endblock%}

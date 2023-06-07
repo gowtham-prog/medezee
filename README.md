@@ -3,7 +3,7 @@
 
 
 
-## 🤔 **Description**
+##  **Description**
 A web application designed with the help of python web based framework **django**. The frontend of the application designed with **HTML, CSS, Javascript.**Backend of the application with **Django**. Database with **SQLite**.
 The online medical appointment website offers a seamless healthcare experience by providing patients with the ability to conveniently schedule appointments, order medicines, and book diagnostic tests from the comfort of their homes. This website revolutionizes healthcare accessibility, saving time and simplifying the entire process for individuals seeking medical consultations, prescriptions, and necessary tests.
 
@@ -16,7 +16,7 @@ The online medical appointment website offers a seamless healthcare experience b
 
 ---
 
-## ⚡ **Installation**
+##  **Installation**
 
 1. Download the zip file of this repository or clone.
 2. **Execute** virtualenv command. Make sure your system has python installed in it.

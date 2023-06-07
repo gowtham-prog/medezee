@@ -3,14 +3,14 @@
 {% block body%}
 <form action="{% url 'book' %}" method="post">
         {% csrf_token %}
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <input autofocus class="form-control" type="text" name="name" placeholder="Patient name">
         </div>
         <div class="form-group" style = "margin-bottom : 5px;">
             <input autofocus class="form-control" type="number" name="age" placeholder="Age">
         </div>
         <div class="form-group">
-             <label for="exampleFormControlSelect1">gender</label>
+             <label for="exampleFormControlSelect1"> </label>
              <select style ="height: 38px;" class="form-select" aria-label="Default select example" name="gender" >
               {% for gend in gender %}
                 <option value="{{ gend.id }}">{{ gend.Gender }}</option>
@@ -33,22 +33,22 @@
              {% endfor %}
            </select>
          </div>
-         <div class="form-group">
+         <div class="form-group" style = "margin-bottom : 20px;">
              <label for="exampleFormControlSelect1"></label>
              <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="doctor" name="doctor" >
               {% for doc in doctor %}
-                <option value="{{ doc.id }}">{{ doc.Name }}</option>
+                <option value="{{ doc.id }}">Dr. {{ doc.Name }}</option>
              {% endfor %}
            </select>
          </div>
 
-        <div class="form-group" style = "margin-bottom : 5px;">
-            <input class="form-control" type="text" name="problem" placeholder="Problem">
+        <div class="form-group" style = "margin-bottom : 20px;">
+            <input style ="height: 38px;" class="form-control" type="text" name="problem" placeholder="Problem">
         </div>
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <input class="form-control" type="time" name="time" format='%H:%M' placeholder="Time">
         </div>
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <input class="form-control" type="date" name="date" placeholder="Date">
         </div>
         <input class="btn btn-primary" type="submit" value="Book">

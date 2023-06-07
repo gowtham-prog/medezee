@@ -11,7 +11,7 @@
              {% endfor %}
            </select>
          </div>
-         <div class="form-group">
+         <div class="form-group" style = "margin-bottom : 20px;">
              <label for="exampleFormControlSelect1"></label>
              <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="location"name="location" >
               {% for hosp in location %}
@@ -19,21 +19,22 @@
              {% endfor %}
            </select>
          </div>
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <input class="form-control" type="text" name="medicine" placeholder="medicine">
         </div>
 
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <select style ="height: 38px;" class="form-select" aria-label="Default select example" name="delivery" >
                 <option value="Home">Home delivery</option>
                 <option value="test center">Pick up</option>
+            </select>
         </div>
 
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <input class="form-control" type="text" name="Name" placeholder="medical shop">
         </div>
         
-        <div class="form-group" style = "margin-bottom : 5px;">
+        <div class="form-group" style = "margin-bottom : 20px;">
             <input class="form-control" type="date" name="date" placeholder="Date">
         </div>
         <input class="btn btn-primary" type="submit" value="Order medicine">

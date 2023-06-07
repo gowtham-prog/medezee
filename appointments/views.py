@@ -153,9 +153,10 @@ def book_test (request):
         auc.save()
         return HttpResponseRedirect(reverse("index"))
     else:
+        user = request.user
         return render(request, "appointments/tests.html",{
             "location":Location.objects.all(),
-            "patient":patient.objects.all()
+            "patient":patient.objects.filter(Creator = user)
 
         })
 @login_required(login_url='/login')  
@@ -179,9 +180,10 @@ def book_medicine(request):
         auc.save()
         return HttpResponseRedirect(reverse("index"))
     else:
+        user = request.user
         return render(request, "appointments/medcine.html",{
             "location":Location.objects.all(),
-            "patient":patient.objects.all()
+            "patient":patient.objects.filter(Creator = user)
         })  
 @login_required(login_url='/login')  
 def cancel_test(request,id):
@@ -224,7 +226,9 @@ def ftc(request):
                 "list2": c
             })
         else:
-            return render(request,'appointments/form1.html')
+            return render(request,'appointments/form1.html',{
+                "list1": test.objects.all()
+            })
     else:
         return render(request,'appointments/show.html',{
             "message": f"Only for staff"
@@ -252,14 +256,16 @@ def fh(request):
     current= request.user
     if current.is_staff:
         if request.method =='POST':
-            Name = request.POST["Name"]
-            b= hospital.objects.get(Name=Name)
+            id = request.POST["hospital"]
+            b= hospital.objects.get(id=id)
             c= patient.objects.filter(Hospital=b).all()
             return render (request,"appointments/show.html",{
                 "list": c
             })
         else:
-            return render(request,'appointments/form2.html')
+            return render(request,'appointments/form2.html',{
+                "list":hospital.objects.all()
+            })
     else:
         return render(request,'appointments/show.html',{
             "message": f"Only for staff"

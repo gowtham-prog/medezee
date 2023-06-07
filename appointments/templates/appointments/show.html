@@ -9,11 +9,19 @@
     <ul>
     {% for item in list %}
     {% if item.Active%}
-    <li class="list-group-item" >Patient Name :{{ item.Name}}  Doctor: {{item.Doctor}} Time :{{item.timestamp}} Date :{{item.Date}} <a class="nav-link scrollto" href= "{% url 'cancel' item.id%}" >Cancel </a></li>
+    <li class="list-group-item" > <ul>
+        <li>Patient Name :{{ item.Name}}</li>
+        <li> Doctor: {{item.Doctor}}</li>
+        <li>Time :{{item.timestamp}}</li>
+        <li>Date :{{item.Date}}</li>
+        {% if request.user.is_staff %}<li> <a class="nav-link scrollto" href= "{% url 'cancel' item.id%}"> Accept </li></a> </ul>
+        {%else%}<li> <a class="nav-link scrollto" href= "{% url 'Cancel' item.id%}">Cancel </li></a> </ul>
+        {%endif%}
+    </ul></li>
     {%endif%}
     {% endfor %}
     </ul>
-    <a href="{%url 'book'%}" class="nav-link scrollto"> Book another appointment </a>
+    {% if request.user.is_staff == False%}<a href="{%url 'book'%}" class="nav-link scrollto"> Book appointment </a>{%endif%}
     {%endif%}
     
 
@@ -22,11 +30,19 @@
     <ul>
     {% for item in list2 %}
     {% if item.Active%}
-    <li class="list-group-item" >Patient Name :{{ item.patient.Name}}  Test: {{item.Test}} Time :{{item.timestamp}} Date :{{item.Date}} <a class="nav-link scrollto" href= "{% url 'canceltest' item.id%}" >Cancel </a></li>
+    <li class="list-group-item" ><ul>
+        <li>Patient Name :{{ item.patient.Name}}</li>
+        <li> Test: {{item.Test}} </li>
+        <li>Time :{{item.timestamp}}</li>
+        <li> Date :{{item.Date}}</li>
+        {% if request.user.is_staff %}<li> <a class="nav-link scrollto" href= "{% url 'canceltest' item.id%}"> Accept </li></a> </ul>
+        {%else%}<li> <a class="nav-link scrollto" href= "{% url 'canceltest' item.id%}">Cancel </li></a> </ul>
+        {%endif%}
+    </li>
     {%endif%}
     {% endfor %}
     </ul>
-    <a href="{%url 'test'%}" class="nav-link scrollto"> Book another Test </a>
+    {% if request.user.is_staff == False%}<a href="{%url 'test'%}" class="nav-link scrollto"> Book Test </a>{%endif%}
     {%endif%}
 
     {% if list3 is not None%}
@@ -34,10 +50,18 @@
     <ul>
     {% for item in list3%}
     {% if item.Active%}
-    <li class="list-group-item" >Patient Name :{{ item.Patient.Name}}  medicine: {{item.medicine}} Date :{{item.Date}} <a class="nav-link scrollto" href= "{% url 'cancelmed' item.id%}" >Cancel </a></li>
+    <li class="list-group-item" ><ul> 
+        <li>Patient Name :{{ item.Patient.Name}} </li>
+        <li> medicine: {{item.medicine}}</li>
+        <li> Date :{{item.Date}} </li>
+        {% if request.user.is_staff %}<li> <a class="nav-link scrollto" href= "{% url 'cancelmed' item.id%}"> Accept </li></a> </ul>
+        {%else%}<li> <a class="nav-link scrollto" href= "{% url 'cancelmed' item.id%}">Cancel </li></a> </ul>
+        {%endif%}
+    </ul>
+</li>
     {%endif%}
     {% endfor %}
     </ul>
-    <a href="{%url 'med'%}" class="nav-link scrollto"> Booksome more Medicine </a>
+    {% if request.user.is_staff == False%}<a href="{%url 'med'%}" class="nav-link scrollto"> Book Medicine </a>{%endif%}
     {%endif%}
 {%endblock%}

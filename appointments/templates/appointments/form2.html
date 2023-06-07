@@ -4,7 +4,11 @@
 <form action="{% url 'fh' %}" method="post">
 {% csrf_token %}
  <div class="form-group" style = "margin-bottom : 5px;">
-    <input class="form-control" type="text" name="Name" placeholder="Hospital name here">
+    <select style ="height: 38px;" class="form-select" aria-label="Default select example" placeholder="Hospital" name="hospital" >
+        {% for dept in list %}
+          <option value="{{ dept.id }}">{{ dept.Name }}</option>
+       {% endfor %}
+     </select>
     <input class="btn btn-primary" type="submit" value="show all appointments">
 </form>
 </div>

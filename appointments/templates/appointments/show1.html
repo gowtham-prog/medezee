@@ -23,7 +23,7 @@
 <h2>Our Hospital</h2>
    <div class="form-group">
         {% for dep in hosp %}
-        <li class="list-group-item" >{{ dep.id }} Hospital name:{{ dep.Name }} Specilities <ul> 
+        <li class="list-group-item" >{{ dep.id }} Hospital name:{{ dep.Name }} Specialities <ul> 
         {%for item in dep.Department.all %}
         <li>{{item.Name}}</li>
          {%endfor%}
